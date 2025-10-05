@@ -49,9 +49,10 @@ function arrayToHex(arr5 : Uint8Array) {
         str += byte.toString(16).padStart(2,'0')
         //toString -> converts to string, as it is what ever it is just changes the type
         //toString(16) -> converts the byte toHexCharacter as 'base16' 
-        //since 16 = 2^4,therefore 4-bits = 1byte in Base16(Hex),
+        //since 16 = 2^4,therefore 4-bits = 1-Character in Base16(Hex),
+        // Therefore, for complete 1 byte in Hex = 2 Chars = 8 bits,
         //padStart adds, a padding of '0' in start,  if the binary of some byte = 4 bits only, means 1 char only,
-        //like hex(8) => '8', but nedds to be 2 char hence padded with 0 = '08'
+        //like hex(8) => '8', but nedds to be 2 char to become 1 byte hence padded with 0 = '08'
     })
     return str;
 }
@@ -64,7 +65,7 @@ console.log('5. Array of bytes to Hexadecimal string = ', hexStr5);
 //6. Hexadecimal to Array
 
 function hexToArray(hexStr6 : string) {
-const bytes = new Uint8Array(hexStr6.length/2); //Bcos, 2 Chars of 'HexStr6' = 1 Byte(8bits) 
+const bytes = new Uint8Array(hexStr6.length/2); //Bcos, 2 Chars of 'HexStr6' = 1 Byte (8bits) 
     for(let i = 0; i<hexStr6.length; i++) {
         bytes[i] = parseInt(hexStr6.substr(i*2,2),16) //parseInt(2chars-of-hexStr6,radix-base-of-any-number)
         //1. substring() uses start and end indexes, while 2. substr() uses a start index and a length.
